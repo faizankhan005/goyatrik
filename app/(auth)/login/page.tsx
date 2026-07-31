@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-    Plane,
-    ShieldCheck,
-    Globe,
+  Plane,
+  ShieldCheck,
+  Globe,
 } from "lucide-react";
-import router from "next/dist/client/router";
 import { FcGoogle } from "react-icons/fc";
+
+
 
 const images = [
     "https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg",
@@ -49,21 +51,7 @@ export default function LoginPage() {
             },
         });
     };
-    const handleLogin = async () => {
-        const { error } =
-            await supabase.auth.signInWithPassword({
-                email,
-                password,
-            });
-
-        if (error) {
-            alert(error.message);
-            return;
-        }
-
-        router.push("/");
-        router.refresh();
-    };
+   
     return (
         <div className="relative min-h-screen overflow-hidden">
             {/* Background Slider */}
