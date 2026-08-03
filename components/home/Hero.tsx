@@ -581,112 +581,7 @@ const bookings = [
         </motion.div>
       </div>
 
-      {/* BOOKING LIST */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <span className="rounded-full bg-blue-50 px-5 py-2 font-semibold text-blue-600">
-            Your Trips
-          </span>
-          <h2 className="mt-6 text-5xl font-black text-slate-900 md:text-6xl">
-            TOURS &amp; TRAVEL BOOKINGS
-            <span className="block bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">
-              BookNow
-            </span>
-          </h2>
-        </motion.div>
-
-        <div className="grid gap-8 text-black lg:grid-cols-3">
-          {bookings.map((booking, index) => (
-            <motion.div
-              key={booking.id}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeUp}
-              transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="group overflow-hidden rounded-[32px] bg-white shadow-xl transition duration-500"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={booking.image}
-                  alt={booking.to}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <div className="absolute bottom-5 left-5 text-white">
-                  <div className="flex items-center gap-2">
-                    <MapPin size={18} />
-                    {booking.from}
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-7">
-                <div className="flex items-center justify-between">
-                  <span
-                    className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold ${booking.status === "Confirmed"
-                      ? "bg-green-100 text-green-600"
-                      : booking.status === "Upcoming"
-                        ? "bg-blue-100 text-blue-600"
-                        : "bg-gray-100 text-gray-600"
-                      }`}
-                  >
-                    {booking.status === "Completed" ? (
-                      <CheckCircle size={16} />
-                    ) : (
-                      <Clock size={16} />
-                    )}
-                    {booking.status}
-                  </span>
-                </div>
-
-                <div className="mt-8 flex items-center gap-4">
-                  <h3 className="text-3xl font-black">{booking.from}</h3>
-                  <div className="flex flex-1 items-center gap-2">
-                    <div className="h-[2px] flex-1 bg-slate-300" />
-                    <Plane className="text-blue-600" />
-                    <div className="h-[2px] flex-1 bg-slate-300" />
-                  </div>
-                  <h3 className="text-3xl font-black">{booking.to}</h3>
-                </div>
-
-                <div className="mt-8 space-y-4 text-slate-600">
-                  <div className="flex items-center gap-3">
-                    <Calendar size={20} />
-                    {booking.date}
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Users size={20} />
-                    {booking.passengers}
-                  </div>
-                </div>
-
-                <div className="mt-8 flex items-center justify-between">
-                  <h4 className="text-3xl font-black">
-                    {booking.price}
-                  </h4>
-
-                  <Link
-                    href={`/tours/${booking.id}`}
-                    className="rounded-2xl bg-slate-900 px-5 py-4 text-white transition hover:bg-cyan-500"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      
 
       {/* POPULAR TOUR ROUTES */}
 
@@ -791,7 +686,7 @@ const bookings = [
           </span>
 
           <h2 className="mt-6 text-5xl font-black text-slate-900 md:text-6xl">
-            Popular Flight
+            Popular Destinations
             <span className="block bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">
               Routes Worldwide
             </span>
@@ -881,6 +776,114 @@ const bookings = [
             </motion.div>
           ))}
 
+        </div>
+      </section>
+
+
+      {/* BOOKING LIST */}
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
+        >
+          <span className="rounded-full bg-blue-50 px-5 py-2 font-semibold text-blue-600">
+            Your Trips
+          </span>
+          <h2 className="mt-6 text-5xl font-black text-slate-900 md:text-6xl">
+            TOURS &amp; TRAVEL BOOKINGS
+            <span className="block bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">
+              BookNow
+            </span>
+          </h2>
+        </motion.div>
+
+        <div className="grid gap-8 text-black lg:grid-cols-3">
+          {bookings.map((booking, index) => (
+            <motion.div
+              key={booking.id}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeUp}
+              transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="group overflow-hidden rounded-[32px] bg-white shadow-xl transition duration-500"
+            >
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={booking.image}
+                  alt={booking.to}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <div className="absolute bottom-5 left-5 text-white">
+                  <div className="flex items-center gap-2">
+                    <MapPin size={18} />
+                    {booking.from}
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-7">
+                <div className="flex items-center justify-between">
+                  <span
+                    className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold ${booking.status === "Confirmed"
+                      ? "bg-green-100 text-green-600"
+                      : booking.status === "Upcoming"
+                        ? "bg-blue-100 text-blue-600"
+                        : "bg-gray-100 text-gray-600"
+                      }`}
+                  >
+                    {booking.status === "Completed" ? (
+                      <CheckCircle size={16} />
+                    ) : (
+                      <Clock size={16} />
+                    )}
+                    {booking.status}
+                  </span>
+                </div>
+
+                <div className="mt-8 flex items-center gap-4">
+                  <h3 className="text-3xl font-black">{booking.from}</h3>
+                  <div className="flex flex-1 items-center gap-2">
+                    <div className="h-[2px] flex-1 bg-slate-300" />
+                    <Plane className="text-blue-600" />
+                    <div className="h-[2px] flex-1 bg-slate-300" />
+                  </div>
+                  <h3 className="text-3xl font-black">{booking.to}</h3>
+                </div>
+
+                <div className="mt-8 space-y-4 text-slate-600">
+                  <div className="flex items-center gap-3">
+                    <Calendar size={20} />
+                    {booking.date}
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Users size={20} />
+                    {booking.passengers}
+                  </div>
+                </div>
+
+                <div className="mt-8 flex items-center justify-between">
+                  <h4 className="text-3xl font-black">
+                    {booking.price}
+                  </h4>
+
+                  <Link
+                    href={`/tours/${booking.id}`}
+                    className="rounded-2xl bg-slate-900 px-5 py-4 text-white transition hover:bg-cyan-500"
+                  >
+                    View Details
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
       {/* HOTELS */}
